@@ -22,4 +22,5 @@ pnpm run build
 ## 参考
 
 - https://github.com/nuxt/eslint-config#typescript
+- https://eslint.vuejs.org/user-guide/
 - 
