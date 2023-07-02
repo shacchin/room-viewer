@@ -1,9 +1,5 @@
 <script setup></script>
 <template>
-  <h1>Room Viewer</h1>
-  <main>
-    <Sidebar />
-    <Viewer />
-  </main>
+  <div>sidebar</div>
 </template>
 <style lang="scss"></style>
