@@ -1,63 +1,25 @@
-# Nuxt 3 Minimal Starter
+# 部屋画像配置アプリ(サンプル)
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+部屋画像をマウスのドラッグ&ドロップで自由に移動できるアプリ。
 
-## Setup
+## 開発用サーバー起動
 
-Make sure to install the dependencies:
+ `http://localhost:3000`
 
 ```bash
-# npm
-npm install
 
-# pnpm
 pnpm install
-
-# yarn
-yarn install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
-npm run dev
-
-# pnpm
 pnpm run dev
 
-# yarn
-yarn dev
 ```
 
-## Production
-
-Build the application for production:
+## ビルド
 
 ```bash
-# npm
-npm run build
-
-# pnpm
 pnpm run build
-
-# yarn
-yarn build
 ```
 
-Locally preview production build:
+## 参考
 
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+- https://github.com/nuxt/eslint-config#typescript
+- 
