@@ -36,3 +36,4 @@ pnpm run generate
 - https://eslint.vuejs.org/user-guide/
 - https://ja.vuejs.org/
 - https://nuxt.com/
+- https://github.com/twbs/bootstrap/blob/main/dist/css/bootstrap-reboot.css
