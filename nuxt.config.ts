@@ -12,4 +12,5 @@ export default defineNuxtConfig({
       pathPrefix: false,
     },
   ],
+  css: ["/assets/css/reset.css","/assets/css/main.scss", "/assets/css/variable.scss"],
 });
