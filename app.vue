@@ -1,4 +1,5 @@
-<script setup></script>
+<script lang="ts" setup></script>
+
 <template>
   <div class="container">
     <header>
@@ -12,6 +13,7 @@
     </main>
   </div>
 </template>
+
 <style lang="scss" scoped>
 .container {
   display: grid;
