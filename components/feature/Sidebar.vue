@@ -6,11 +6,17 @@ import { convertItemNameToJp } from "~/libs/converter";
 const positionsStore = usePositionsStore();
 </script>
 <template>
-  <h2>現在地</h2>
-  <ul>
-    <li v-for="(position, key) in positionsStore.positions" :key="key">
-      <Position :label="convertItemNameToJp(key)" :position="position" />
-    </li>
-  </ul>
+  <div class="sidebar">
+    <h2>座標</h2>
+    <ul>
+      <li v-for="(position, key) in positionsStore.positions" :key="key">
+        <Position :label="convertItemNameToJp(key)" :position="position" />
+      </li>
+    </ul>
+  </div>
 </template>
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.sidebar {
+  padding: 1rem;
+}
+</style>

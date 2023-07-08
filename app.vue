@@ -3,7 +3,7 @@
 <template>
   <div class="container">
     <header>
-      <h1 class="title">Room Viewer</h1>
+      <AppTitle />
     </header>
     <aside class="sidebar">
       <Sidebar />
