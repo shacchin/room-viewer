@@ -47,9 +47,11 @@ pnpm run generate
 
 ## 参考
 
-- https://github.com/nuxt/eslint-config#typescript
-- https://eslint.vuejs.org/user-guide/
+- https://chat.openai.com/
+- https://developer.mozilla.org/ja/
 - https://ja.vuejs.org/
 - https://nuxt.com/
+- https://pinia.vuejs.org/
+- https://github.com/nuxt/eslint-config#typescript
+- https://eslint.vuejs.org/user-guide/
 - https://github.com/twbs/bootstrap/blob/main/dist/css/bootstrap-reboot.css
-- https://chat.openai.com/

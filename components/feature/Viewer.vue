@@ -1,27 +1,47 @@
 <script lang="ts" setup>
-import { ref, onMounted } from "vue";
+import { ref, onMounted, nextTick } from "vue";
+import { usePositionsStore } from "~/store/positions";
 import { viewerSize, minViewerSize } from "~/defines/viewer";
 
 const svgSize = ref(viewerSize);
-const viewer = ref(null);
+const viewerScale = ref(1);
+const svg = ref<HTMLElement | null>(null);
+const viewer = ref<HTMLElement | null>(null);
+const svgPosition = ref({ x: 0, y: 0 });
+
+const positionsStore = usePositionsStore();
+
+const moveFloor = (x: number, y: number) => {
+  positionsStore.setPosition("floor", { x, y });
+};
 
 onMounted(() => {
   const calcViewerSize = (baseWidth: number, baseHeight: number) => {
     const targetSize = baseWidth < baseHeight ? baseWidth : baseHeight;
-    const viewerScale = targetSize / viewerSize;
     // NOTE viewer領域に対する割合
     const baseScale = 0.9;
+    viewerScale.value = (targetSize / viewerSize) * baseScale;
 
-    const scaledViewerSize = viewerSize * viewerScale * baseScale;
+    const scaledViewerSize = viewerSize * viewerScale.value;
 
     return scaledViewerSize < minViewerSize ? minViewerSize : scaledViewerSize;
   };
 
   const viewerObserver = new ResizeObserver((entries) => {
-    entries.forEach((entry) => {
-      const { width, height } = entry.contentRect;
-      svgSize.value = calcViewerSize(width, height);
-    });
+    Promise.all(
+      entries.map(async (entry) => {
+        const { width, height } = entry.contentRect;
+        svgSize.value = calcViewerSize(width, height);
+
+        // リサイズ後のsvgタグ情報が必要なためnextTick
+        await nextTick();
+        if (svg.value) {
+          const { x, y } = svg.value.getBoundingClientRect();
+          svgPosition.value.x = x;
+          svgPosition.value.y = y;
+        }
+      })
+    );
   });
 
   if (viewer.value) {
@@ -34,12 +54,18 @@ onMounted(() => {
 <template>
   <div ref="viewer" class="viewer">
     <svg
+      ref="svg"
       class="viewer-svg"
       :width="svgSize"
       :height="svgSize"
       :viewBox="`0 0 ${viewerSize} ${viewerSize}`"
     >
-      <Floor :x="0" :y="0" />
+      <Floor
+        :position="positionsStore.positions.floor"
+        :viewerPosition="svgPosition"
+        :move="moveFloor"
+        :viewerScale="viewerScale"
+      />
     </svg>
   </div>
 </template>
