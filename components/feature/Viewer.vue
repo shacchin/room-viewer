@@ -2,6 +2,7 @@
 import { ref, onMounted, nextTick } from "vue";
 import { usePositionsStore } from "~/store/positions";
 import { viewerSize, minViewerSize } from "~/defines/viewer";
+import { ItemPosition } from "~/types/item";
 
 const svgSize = ref(viewerSize);
 const viewerScale = ref(1);
@@ -11,8 +12,8 @@ const svgPosition = ref({ x: 0, y: 0 });
 
 const positionsStore = usePositionsStore();
 
-const moveFloor = (x: number, y: number) => {
-  positionsStore.setPosition("floor", { x, y });
+const moveFloor = (position: ItemPosition) => {
+  positionsStore.setPosition("floor", { x: position.x, y: position.y });
 };
 
 onMounted(() => {

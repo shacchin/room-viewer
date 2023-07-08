@@ -2,12 +2,13 @@
 import { ref } from "vue";
 import { addCursorStyle, removeCursorStyle } from "~/libs/cursor-handler";
 import { viewerSize, clipedImageCircum } from "~/defines/viewer";
+import { ItemPosition } from "~/types/item";
 
 const props = defineProps<{
-  position: { x: number; y: number };
+  position: ItemPosition;
   viewerPosition: { x: number; y: number };
   viewerScale: number;
-  move: (x: number, y: number) => void;
+  move: (position: ItemPosition) => void;
 }>();
 
 const viewBox = ref(clipedImageCircum.floor);
@@ -43,7 +44,7 @@ const startMoveFloor = (event: MouseEvent) => {
     const x = (event.pageX - props.viewerPosition.x) / props.viewerScale - dragOffset.value.x;
     const y = (event.pageY - props.viewerPosition.y) / props.viewerScale - dragOffset.value.y;
 
-    props.move(judgeMinMax(x, "x"), judgeMinMax(y, "y"));
+    props.move({ x: judgeMinMax(x, "x"), y: judgeMinMax(y, "y") });
   };
 
   const removeEvents = () => {
