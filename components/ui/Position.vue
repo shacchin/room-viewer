@@ -1,9 +1,10 @@
 <script lang="ts" setup>
 import { computed } from "vue";
+import { ItemPosition } from "~/types/item";
 
 const props = defineProps<{
   label: string;
-  position: { x: number; y: number };
+  position: ItemPosition;
 }>();
 
 // NOTE 表示用の値として小数点第二位までのものを用意
